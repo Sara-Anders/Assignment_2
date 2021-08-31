@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- meta viewport tag for css media queries -->
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>React and JSON Week Two</title>
+  <!-- Add some local css Styling-->
+<style>
+  ol{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  background: light grey;
+  border-radius: 50%
+  }
+
+  li {
+			display: inline-block;
+      padding: 30px;
+		}
+</style>
+
+<!-- load in Jquary! -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!--Get React in here -->
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+  <!--Bable transpiler to make everything happy, converting react JSX into pure plain (mmm) vanilla javascript -->
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+  <!--javascript in the react library is going to be able to do whatever it wants to this div and its contents, the root element for react app-->
+  <div id="letsTry"></div>
+
+
+<script type = "text/babel">
+
+//invoke react library, dont forget to tell browser this is for babel to //intupret...use strict rule= strict mode for browser 
+"use strict";
+
+//Using the rect page component
+function SchemeList(props){
+
+//need to return some output for component using JSX
+//jsx looks like hybrid html with javascript in it
+      return <div>
+        
+         <ol>
+         {
+        
+            props.list.map(
+              (rock,index) => (
+                <li key={index}>
+                  {rock.petIdent}
+                </li>
+              )
+            )
+         }
+
+         </ol>
+      </div>
+}
+
+//jquary loading json
+console.log("Over here")
+$.getJSON("nuthin" , function (jsonFromJquary){
+  console.log(jsonFromJquary)
+    ReactDOM.render(
+      <SchemeList list={jsonFromJquary}/>,
+        document.getElementById("letsTry")
+    );
+}
+).fail(function(){console.log("error here")});
+</script>
+</body>
+</html>
