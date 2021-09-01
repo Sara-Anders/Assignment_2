@@ -10,14 +10,16 @@
   margin: 0;
   padding: 0;
   list-style-type: none;
-  background: light grey;
-  border-radius: 50%
+  
   }
 
   li {
 			display: inline-block;
       padding: 30px;
 		}
+
+    a{color: green;}
+    a:hover {color:pink;}
 </style>
 
 <!-- load in Jquary! -->
@@ -53,7 +55,9 @@ function SchemeList(props){
             props.list.map(
               (rock,index) => (
                 <li key={index}>
+                  <a href={rock.link}>
                   {rock.petIdent}
+                  </a>
                 </li>
               )
             )
